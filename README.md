@@ -1,4 +1,4 @@
-# Squad Discord Bot
+# Discord Bot
 
 ## Functions Implemented:
 
