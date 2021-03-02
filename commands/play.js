@@ -37,6 +37,6 @@ module.exports = {
                 return message.reply("No response after 30 seconds, shutting down.");
             });
         
-        const connect = await message.member.voice.channel.join();
+        //const connect = await message.member.voice.channel.join();
     }
 }
