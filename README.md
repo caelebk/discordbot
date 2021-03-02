@@ -22,6 +22,6 @@
 
 - Emote adder
 
-- Winrate finder
+- opgg finder
 
 - Chegg scraper?
