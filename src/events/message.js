@@ -13,6 +13,10 @@ module.exports = {
             client.commands.get('help').execute(message,args,client);
         } else if (command === "args") {
             client.commands.get('args').execute(message,args);
+        } else if (command === "play") {
+            client.commands.get('play').execute(message,args);
+        } else if (command === "stop") {
+            client.commands.get('stop').execute(message,args);
         }
     }
 }
