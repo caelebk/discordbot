@@ -8,9 +8,12 @@
 
 - Music Player
 
-  - Implemented youtube search query.
-  - Need to implement youtube video downloader.
-  - Need to implement play, pause, stop.
+  - Implemented youtube query
+    - Implemented top 3 results based on search
+  - Implemented youtube audio downloader.
+  - Implemented play video audio
+    - Implemented option to choose one of three audios based on query.
+  - Need to implement pause & stop.
   - Need to implement a queue.
 
 - OPGG web scraper

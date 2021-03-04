@@ -9,7 +9,7 @@ module.exports = {
         const baseUrl = "https://na.op.gg/summoner/userName=";
         var name = args.join("+").toLowerCase();
         console.log(name);
-        if (name === "laneless") return message.channel.send("**Laneless**: remains free as fuck");
+        if (name === "laneless") return message.channel.send("**Laneless**: remains free");
         var info = scrapeProduct(baseUrl+name, message, name);
         
     }
@@ -27,7 +27,7 @@ async function scrapeProduct(url, message, name) {
     const [wr] = await page.$x('//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[2]/span[3]');
     if(typeof(wr) == 'undefined') {
         console.log("Failed to find winrate");
-        return message.channel.send("Failed to find winrate due to either being unranked or being fucking bad.");
+        return message.channel.send("Failed to find winrate due to either being unranked or being bad.");
     }
     console.log("4");
     const txt = await wr.getProperty('textContent');
@@ -40,7 +40,7 @@ async function scrapeProduct(url, message, name) {
     const [r] = await page.$x('/html/body/div[2]/div[2]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]');
     if(typeof(r) == 'undefined') {
         console.log("Failed to find rank")
-        return message.channel.send("Failed to find rank due to either being unranked or being fucking bad.");
+        return message.channel.send("Failed to find rank due to either being unranked or being bad.");
     }
     console.log("7");
     const txt2 = await r.getProperty('textContent');
