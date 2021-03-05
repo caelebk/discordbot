@@ -16,7 +16,7 @@
   - Need to implement pause & stop.
   - Need to implement a queue.
 
-- OPGG web scraper
+- OPGG data collection (through webscraping)
   - Implemented solo/duo rank + winrate finder
   - Need to implement flex rank + winrate finder
   - Need to implement maybe most recent match?
@@ -25,7 +25,7 @@
 
 - Role Adder
 
-- Event Scheduler?
+- Event Scheduler/Reminder
 
 - Vote System
 
@@ -33,8 +33,12 @@
 
 - Emote adder
 
-- Myanimelist scraper (database & statistical analysis maybe)?
+- Webscraping Ideas
 
-- Chegg scraper?
+  - Myanimelist (database & statistical analysis maybe)?
+  - Chegg?
+  - Osu scraper?
 
 - opt into unofficial roles
+  - !opt {rolename} to opt into an unofficial role to prevent role clutter.
+  - !ping {rolename} for bot to ping all the users inside that unofficial role.
