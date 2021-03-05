@@ -20,6 +20,7 @@
   - Implemented solo/duo rank + winrate finder
   - Need to implement flex rank + winrate finder
   - Need to implement maybe most recent match?
+    [![IMAGE ALT TEXT](https://play-lh.googleusercontent.com/UdvXlkugn0bJcwiDkqHKG5IElodmv-oL4kHlNAklSA2sdlVWhojsZKaPE-qFPueiZg)](https://im2.ezgif.com/tmp/ezgif-2-5e8ee72425b9.mp4 "Video Title")
 
 ## Functions to be Implemented:
 
