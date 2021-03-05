@@ -9,7 +9,7 @@ module.exports = {
         const baseUrl = "https://na.op.gg/summoner/userName=";
         var name = args.join("+").toLowerCase();
         console.log(name);
-        if (name === "laneless") return message.channel.send("**Laneless**: Win Ratio 0%, Brainless");
+        if (name === "laneless") return message.channel.send("**Laneless**: Brainless");
         scrapeProduct(baseUrl+name, message, name);
         
     }
@@ -64,7 +64,7 @@ async function scrapeProduct(url, message, name) {
     for(var x = 0; x < split.length; x++)
         split[x] = split[x].substring(0,1).toUpperCase() + split[x].substring(1);
     console.log(split.join(" ") +": " + info.winrate + ", "+ info.rank + ", " + info.lp.replace(/\D/g, "") + " LP ");
-    message.channel.send("**" + split.join(" ") +":** " + info.winrate + ", "+ info.rank + " " + info.lp.replace(/\D/g, "") + " LP  @ " + url);
+    message.channel.send("**" + split.join(" ") +":** " + info.winrate + ", "+ info.rank + ", " + info.lp.replace(/\D/g, "") + " LP  @ " + url);
     message.channel.send("stay free noob");
 }
 
