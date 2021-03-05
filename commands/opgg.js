@@ -9,8 +9,8 @@ module.exports = {
         const baseUrl = "https://na.op.gg/summoner/userName=";
         var name = args.join("+").toLowerCase();
         console.log(name);
-        if (name === "laneless") return message.channel.send("**Laneless**: remains free");
-        var info = scrapeProduct(baseUrl+name, message, name);
+        if (name === "laneless") return message.channel.send("**Laneless**: Win Ratio 0%, Brainless");
+        scrapeProduct(baseUrl+name, message, name);
         
     }
 }
@@ -35,9 +35,8 @@ async function scrapeProduct(url, message, name) {
     const winrate = await txt.jsonValue();
     console.log("6");
 
-
-    ////*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[2]
-    const [r] = await page.$x('/html/body/div[2]/div[2]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]');
+    //"/html/body/div[2]/div[3]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]"
+    const [r] = await page.$x('/html/body/div[2]/div[3]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]');
     if(typeof(r) == 'undefined') {
         console.log("Failed to find rank")
         return message.channel.send("Failed to find rank due to either being unranked or being bad.");
@@ -48,12 +47,24 @@ async function scrapeProduct(url, message, name) {
     const rank = await txt2.jsonValue();
     console.log("9");
     
-    var info = {winrate, rank};
+    //"//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[1]"
+    const [lpr] = await page.$x('//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[1]');
+    if(typeof(lpr) == 'undefined') {
+        console.log("Failed to find rank")
+        return message.channel.send("Failed to find rank due to either being unranked or being bad.");
+    }
+    console.log("10");
+    const txt3 = await lpr.getProperty('textContent');
+    console.log("11");
+    const lp = await txt3.jsonValue();
+    console.log("12");
+
+    var info = {winrate, rank, lp};
     var split = name.split("+");
     for(var x = 0; x < split.length; x++)
         split[x] = split[x].substring(0,1).toUpperCase() + split[x].substring(1);
-    console.log(split.join(" ") +": " + info.winrate + ", "+ info.rank);
-    message.channel.send("**" + split.join(" ") +":** " + info.winrate + ", "+ info.rank + "  @ " + url);
+    console.log(split.join(" ") +": " + info.winrate + ", "+ info.rank + ", " + info.lp.replace(/\D/g, "") + " LP ");
+    message.channel.send("**" + split.join(" ") +":** " + info.winrate + ", "+ info.rank + " " + info.lp.replace(/\D/g, "") + " LP  @ " + url);
     message.channel.send("stay free noob");
 }
 

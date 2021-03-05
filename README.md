@@ -33,4 +33,8 @@
 
 - Emote adder
 
+- Myanimelist scraper (database & statistical analysis maybe)?
+
 - Chegg scraper?
+
+- opt into unofficial roles
