@@ -19,6 +19,8 @@ module.exports = {
             client.commands.get('stop').execute(message,args);
         } else if (command === "opgg") {
             client.commands.get('opgg').execute(message,args);
+        } else if (command === "stat") {
+            client.commands.get('stat').execute(message, args);
         }
     }
 }
