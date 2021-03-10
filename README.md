@@ -4,8 +4,6 @@
 
 - Interactive Commandline
 
----
-
 ## Work In Progress:
 
 - Music Player
@@ -23,14 +21,11 @@
   - Implemented solo/duo rank + winrate finder
   - Need to implement flex rank + winrate finder
   - Need to implement maybe most recent match?
+    ![Alt text](/resources/opggpresent.gif)
 
 - Google Spreadsheet parser for 5v5 League of Legends data
   - Implemented ability to parse specific data off a public google spreadsheet
   - Need to organize/restructure a little better but functionality be good
-
-![Alt text](/resources/opggpresent.gif)
-
----
 
 ## Functions to be Implemented:
 
