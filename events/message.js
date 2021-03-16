@@ -1,7 +1,7 @@
 module.exports = {
     name: 'message',
     execute(message, client) {
-        const prefix = "!";
+        const prefix = ".";
         if (message.author.bot) return; // if message is from the bot itself or other bots ignore.
         if (!message.content.startsWith(prefix)) return; //if message doesnt start with prefix then ignore.
 

@@ -6,10 +6,10 @@ module.exports = {
         var descriptions = Array.from(client.commandDescriptions.keys());
         var msg = "Current Commands:\n";
         var help = keys.indexOf("help");
-        msg += "**!" + keys[help] +"** - "+ descriptions[help]+"\n";
+        msg += "**." + keys[help] +"** - "+ descriptions[help]+"\n";
         for(var x = 0; x < keys.length; x++) {
             if(x!=help)
-                msg += "**!"+keys[x]+"** - " +descriptions[x] +"\n";
+                msg += "**."+keys[x]+"** - " +descriptions[x] +"\n";
         }
         message.reply(msg);
     }

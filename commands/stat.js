@@ -2,7 +2,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('./../secret.json');
 module.exports = {
     name: "stat",
-    description: "gets stats",
+    description: "gets stats from inhouses in form of .stat name typeofstat",
     async execute(message, args) {
         if(args[0] == "" || args.length <= 1) return message.reply("Invalid input.");
         const text = await getData(args[0], args[1])
