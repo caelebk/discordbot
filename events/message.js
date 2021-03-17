@@ -17,9 +17,9 @@ module.exports = {
             client.commands.get('play').execute(message,args);
         } else if (command === "stop") {
             client.commands.get('stop').execute(message,args);
-        } else if (command === "opgg") {
+        } /*else if (command === "opgg") {
             client.commands.get('opgg').execute(message,args);
-        } else if (command === "stat") {
+        } */else if (command === "stat") {
             client.commands.get('stat').execute(message, args);
         }
     }
