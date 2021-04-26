@@ -1,73 +1,69 @@
-const puppeteer = require('puppeteer');
 
+const axios = require("axios");
+const cheerio = require("cheerio");
+const { stat } = require("fs");
 module.exports = {
     name: "opgg",
     description: "finds the given players winrate",
     execute(message,args) {
-        //div class = TierInfo
-        //div class = TierRank
         const baseUrl = "https://na.op.gg/summoner/userName=";
-        var name = args.join("+").toLowerCase();
-        console.log(name);
-        if (name === "laneless") return message.channel.send("**Laneless**: Brainless");
-        scrape(baseUrl+name, message, name);
-        
+        var user = args.join("+").toLowerCase();
+        if (user === "laneless") return message.channel.send("**Laneless**: Brainless");
+
+        scrape(baseUrl+user, message);
     }
 }
-async function scrape(url, message, name) {
 
-    var split = name.split("+");
-    for(var x = 0; x < split.length; x++)
-        split[x] = split[x].substring(0,1).toUpperCase() + split[x].substring(1);
-    console.log("scraping "+ url);
-    const browser = await puppeteer.launch();
-    console.log("1");
-    const page = await browser.newPage();
-    console.log("2");
-    await page.goto(url);
-    console.log("3");
-
-
-    //"/html/body/div[2]/div[3]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]"
-    const [r] = await page.$x('/html/body/div[2]/div[3]/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/div[2]');
-    if(typeof(r) == 'undefined') {
-        console.log("Failed to find rank")
-        return message.channel.send("Failed to find rank | User doesn't exist.");
+async function scrape(url, message){
+    const { data } = await axios.get(url);
+    const $ = cheerio.load(data);;
+    var content = $('meta[name="description"]').attr("content");
+    var stats = content.split("/");
+    for(var x = 0; x < stats.length; x++){
+        stats[x] = stats[x].trim();
     }
-    console.log("4");
-    const txt2 = await r.getProperty('textContent');
-    console.log("5");
-    const rank = await txt2.jsonValue();
-    console.log("6");
-    if(rank.trim() == "Unranked") return message.channel.send("**" + split.join(" ") + ":** " + "Unranked @ " + url);
+    console.log(stats);
 
-    ////*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[2]/span[3]
-    const [wr] = await page.$x('//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[2]/span[3]');
-    if(typeof(wr) == 'undefined') {
-        console.log("Failed to find winrate");
-        return message.channel.send("Failed to find winrate due to either being unranked or being bad.");
+    if(stats.length < 1) {
+        message.channel.send("User doesn't exist.")
+        return;
     }
-    console.log("7");
-    const txt = await wr.getProperty('textContent');
-    console.log("8");
-    const winrate = await txt.jsonValue();
-    console.log("9");
+    var msg = concatenate(stats);
+    message.channel.send(msg);
+}
+
+function concatenate(strarray){
+    if (strarray.length < 4) {
+        return "**Name: **" + strarray[0] + "\n**Level: **" + strarray[2] +"\nNo Stats Found.";
+    }
     
-    //"//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[1]"
-    const [lpr] = await page.$x('//*[@id="SummonerLayoutContent"]/div[2]/div[1]/div[1]/div/div[2]/div[3]/span[1]');
-    if(typeof(lpr) == 'undefined') {
-        console.log("Failed to find LP")
-        return message.channel.send("Failed to find LP.");
+    var msg = "**Name: **" +strarray[0];
+
+    var rankinfo = strarray[1].split(" ");
+    msg += "\n**Rank:** " + rankinfo[0] + " " + rankinfo[1] + " **|** " + rankinfo[2];
+
+    var ratio = strarray[2].split(" ");
+    var wr = ratio[2] + " " + "Rate:** " + ratio[4];
+    msg += "\n**" + wr + " **|** " + ratio[0] + "-" + ratio[1];
+
+    var champinfo = strarray[3].split(",");
+    msg += "\n**Most Played Champions:**";
+    msg += "\n**------------------------------**";
+    for(var x = 0; x < champinfo.length; x++){
+        msg += "\n" + champinfo[x].trim();
     }
-    console.log("10");
-    const txt3 = await lpr.getProperty('textContent');
-    console.log("11");
-    const lp = await txt3.jsonValue();
-    console.log("12");
+
+    return msg;
+}
 
 
-    console.log(split.join(" ") +": " + winrate + ", "+ rank + ", " + lp.replace(/\D/g, "") + " LP ");
-    message.channel.send("**" + split.join(" ") +":** " + winrate + ", "+ rank + ", " + lp.replace(/\D/g, "") + " LP  @ " + url);
-    message.channel.send("stay free noob");
+function findMaxLength(strarray){
+    var max = 0;
+    for(var x = 0; x < strarray.length; x++){
+        if(max < strarray[x].length){
+            max = strarray[x].length;
+        }
+    }
+    return max;
 }
 
