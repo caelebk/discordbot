@@ -42,7 +42,6 @@
 - Webscraping Ideas
 
   - Myanimelist?
-  - Chegg?
   - Osu scraper?
 
 - opt into unofficial roles
