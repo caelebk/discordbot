@@ -3,6 +3,7 @@
 ## Functions Implemented:
 
 - Interactive Commandline
+- Vote System
 
 ## Work In Progress:
 
@@ -31,8 +32,6 @@
 - Role Adder
 
 - Event Scheduler/Reminder
-
-- Vote System
 
 - Memes
 
