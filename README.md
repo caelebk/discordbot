@@ -3,6 +3,7 @@
 ## Functions Implemented:
 
 - Interactive Commandline
+- Vote System
 
 ## Work In Progress:
 
@@ -23,7 +24,7 @@
   - Need to implement maybe most recent match?
 
 - Google Spreadsheet parser for 5v5 League of Legends data
-  - Implemented ability to parse specific data off a public google spreadsheet
+  - Implemented ability to obtain specific data off a public google spreadsheet
   - Need to organize/restructure a little better but functionality is good
 
 ## Functions to be Implemented:
@@ -31,8 +32,6 @@
 - Role Adder
 
 - Event Scheduler/Reminder
-
-- Vote System
 
 - Memes
 
@@ -47,3 +46,8 @@
 
   - !opt {rolename} to opt into an unofficial role to prevent role clutter.
   - !ping {rolename} for bot to ping all the users inside that unofficial role.
+
+- discord anime list
+  - saves all the anime that the discord wants to watch as a group
+  - saves the episode too?
+  - saves the users watching that anime & the episodes each user is on?
