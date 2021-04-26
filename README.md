@@ -41,7 +41,7 @@
 
 - Webscraping Ideas
 
-  - Myanimelist (database & statistical analysis maybe)?
+  - Myanimelist?
   - Chegg?
   - Osu scraper?
 
