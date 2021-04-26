@@ -22,7 +22,7 @@ async function scrape(url, message){
     for(var x = 0; x < stats.length; x++){
         stats[x] = stats[x].trim();
     }
-    console.log(stats);
+    //console.log(stats);
 
     if(stats.length < 1) {
         message.channel.send("User doesn't exist.")
