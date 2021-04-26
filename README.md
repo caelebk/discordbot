@@ -25,7 +25,7 @@
 
 - Google Spreadsheet parser for 5v5 League of Legends data
   - Implemented ability to parse specific data off a public google spreadsheet
-  - Need to organize/restructure a little better but functionality be good
+  - Need to organize/restructure a little better but functionality is good
 
 ## Functions to be Implemented:
 
