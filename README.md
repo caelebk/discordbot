@@ -21,7 +21,6 @@
   - Implemented solo/duo rank + winrate finder + most played champs (Fixed)
   - Need to implement flex rank + winrate finder
   - Need to implement maybe most recent match?
-    ![Alt text](/resources/opggpresent.gif)
 
 - Google Spreadsheet parser for 5v5 League of Legends data
   - Implemented ability to parse specific data off a public google spreadsheet
