@@ -1,15 +1,15 @@
 module.exports = {
     name: "vote",
-    description: "start a vote with .vote [option1], [option2], ...",
+    description: "start a vote with .vote [prompt], [option1], [option2], ...",
     execute(message,args){
-        if(args.length == 0) return message.channel.send("No options were inputted");
-        if(args.length == 1) return message.channel.send("Only one option was inputted");
-        var vote = "";
+        if(args.length <= 1) return message.channel.send("No options were inputted");
+        if(args.length == 2) return message.channel.send("Only one option was inputted");
+        var vote = "**"+args[0].charAt(0).toUpperCase() + args[0].slice(1) +"?**\n\n";
         var emojiReacts = [];
-        for(var x = 0; x < args.length; x++){
+        for(var x = 1; x < args.length; x++){
             if(x.toString().length < 2) {
-                vote += matchEmoji(x+1) + " - " +args[x] +"\n\n";
-                emojiReacts.push(matchEmoji(x+1));
+                vote += matchEmoji(x) + " - " +args[x] +"\n\n";
+                emojiReacts.push(matchEmoji(x));
             }
         }
         console.log(emojiReacts);
