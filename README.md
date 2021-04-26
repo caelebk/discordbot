@@ -46,3 +46,8 @@
 
   - !opt {rolename} to opt into an unofficial role to prevent role clutter.
   - !ping {rolename} for bot to ping all the users inside that unofficial role.
+
+- discord anime list
+  - saves all the anime that the discord wants to watch as a group
+  - saves the episode too?
+  - saves the users watching that anime & the episodes each user is on?
