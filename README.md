@@ -18,7 +18,7 @@
 
 - OPGG data collection (through webscraping)
 
-  - Implemented solo/duo rank + winrate finder
+  - Implemented solo/duo rank + winrate finder + most played champs (Fixed)
   - Need to implement flex rank + winrate finder
   - Need to implement maybe most recent match?
     ![Alt text](/resources/opggpresent.gif)
