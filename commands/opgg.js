@@ -24,7 +24,7 @@ async function scrape(url, message){
     }
     //console.log(stats);
 
-    if(stats.length < 1) {
+    if(stats.length <= 1) {
         message.channel.send("User doesn't exist.")
         return;
     }
