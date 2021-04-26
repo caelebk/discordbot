@@ -13,7 +13,7 @@
   - Implemented youtube audio downloader.
   - Implemented play video audio
     - Implemented option to choose one of three audios based on query.
-  - Need to implement pause & stop.
+  - Implemented stop.
   - Need to implement a queue.
 
 - OPGG data collection (through webscraping)
