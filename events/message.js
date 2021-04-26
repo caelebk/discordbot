@@ -23,8 +23,8 @@ module.exports = {
             client.commands.get('stat').execute(message, args);
         } else if (command === "vote") {
             client.commands.get('vote').execute(message, args.join(" ").split(", "));
-        } else if (command === "racist") {
-            client.commands.get('racist').execute(message);
+        } else if (command === "gif") {
+            client.commands.get('gif').execute(message, args);
         }
     }
 }
