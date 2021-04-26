@@ -4,12 +4,10 @@ const cheerio = require("cheerio");
 const { stat } = require("fs");
 module.exports = {
     name: "opgg",
-    description: "finds the given players winrate",
+    description: "finds the given players stats",
     execute(message,args) {
         const baseUrl = "https://na.op.gg/summoner/userName=";
         var user = args.join("+").toLowerCase();
-        if (user === "laneless") return message.channel.send("**Laneless**: Brainless");
-
         scrape(baseUrl+user, message);
     }
 }
