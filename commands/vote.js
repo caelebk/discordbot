@@ -45,6 +45,6 @@ function matchEmoji(num){
         case 10:
             return "🔟"
         default:
-            return ":x:"
+            return "❌"
     }
 }
