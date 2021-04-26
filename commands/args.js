@@ -5,7 +5,7 @@ module.exports = {
     execute(message,args) {
         var argStr = ""
         for (var x = 0; x < args.length; x++){
-            argStr += args[x];
+            argStr += args[x] + " ";
         }
         message.channel.send(argStr);
     }
