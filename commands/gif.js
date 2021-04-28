@@ -21,6 +21,8 @@ module.exports = {
             message.channel.send({ files: ["./resources/gif/monke.gif"] });
         }else if(args[0] == "phasmo"){
             message.channel.send({ files: ["./resources/gif/phasmo.gif"] });
+        }else if(args[0] == "bloonstd6") {
+            message.channel.send({ files: ["./resources/gif/bloonstd6.gif"]});
         }
     }
 }
