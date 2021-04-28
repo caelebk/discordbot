@@ -25,6 +25,10 @@ module.exports = {
             client.commands.get('vote').execute(message, args.join(" ").split(", "));
         } else if (command === "gif") {
             client.commands.get('gif').execute(message, args);
+        } else if (command === "anime") {
+            client.commands.get('anime').execute(message,args);
+        } else if (command === "clear") {
+            client.commands.get('clear').execute(message);
         }
     }
 }
