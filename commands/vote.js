@@ -1,6 +1,6 @@
 module.exports = {
     name: "vote",
-    description: "start a vote with .vote [prompt], [option1], [option2], ...",
+    description: "Starts a vote with .vote [prompt], [option1], [option2], ...",
     execute(message,args){
         if(args.length <= 1) return message.channel.send("No options were inputted");
         if(args.length == 2) return message.channel.send("Only one option was inputted");

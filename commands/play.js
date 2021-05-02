@@ -2,7 +2,7 @@ const ytdl = require('ytdl-core');
 const yts = require('yt-search');
 module.exports = {
     name: 'play',
-    description: 'either search for a youtube video or link a youtube video to play',
+    description: 'Plays music from a youtube search query.',
     async execute(message,args) {
         if(!message.member.voice.channel) return message.reply("please join a channel first.");
         if(!message.member.voice.channel.permissionsFor(message.client.user).has('CONNECT')) return message.reply("Need permissions to join");

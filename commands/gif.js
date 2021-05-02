@@ -1,29 +1,18 @@
 const fs = require('fs');
+const path = require('path');
 module.exports = {
     name: 'gif',
-    description: "sends one of the gifs the bot contains",
+    description: "Sends a specific gifs the bot contains.",
     execute(message,args) {
         
         if(args.length == 0 || args.length > 1) return message.channel.send("Command used incorrectly");
-        if(args[0] == 'list') {
-            message.channel.send("GIF List:```\n" + createList() + "```")
-        }else if(args[0] == "racist"){
-            message.channel.send({ files: ["./resources/gif/racist.gif"] });
-        }else if(args[0] == "shrek"){
-            message.channel.send({ files: ["./resources/gif/shrek.gif"] });
-        }else if(args[0] == "andrew"){
-            message.channel.send({ files: ["./resources/gif/andrew.gif"] });
-        }else if(args[0] == "apex"){
-            message.channel.send({ files: ["./resources/gif/apex.gif"] });
-        }else if(args[0] == "god"){
-            message.channel.send({ files: ["./resources/gif/god.gif"] });
-        }else if(args[0] == "monke"){
-            message.channel.send({ files: ["./resources/gif/monke.gif"] });
-        }else if(args[0] == "phasmo"){
-            message.channel.send({ files: ["./resources/gif/phasmo.gif"] });
-        }else if(args[0] == "bloonstd6") {
-            message.channel.send({ files: ["./resources/gif/bloonstd6.gif"]});
-        }
+        if(args[0] == 'list') return message.channel.send("GIF List:```\n" + createList() + "```"); 
+
+        var filepath = "./resources/gif/" + args[0] + ".gif";
+        message.channel.send({files: [filepath]}).catch(err => {
+            console.error(err);
+            message.channel.send("File not Found.")
+        });
     }
 }
 

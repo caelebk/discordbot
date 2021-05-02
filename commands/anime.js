@@ -1,7 +1,7 @@
 var fs = require('fs');
 module.exports = {
     name: 'anime',
-    description: 'group anime list',
+    description: 'Discord anime list, used with .anime [current/plan] [add/remove] [title] to add/remove to either currently watching/plan to watch or .anime list to check the list.',
     execute(message, args) {
         if(args.length < 1) return message.channel.send("Command incorrectly used");
         if(args[0] == "list"){

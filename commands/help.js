@@ -1,6 +1,6 @@
 module.exports = {
     name: 'help',
-    description: "Lists all the bot commands",
+    description: "Lists all the bot commands.",
     execute(message,args,client) {
         var keys = Array.from(client.commands.keys());
         var descriptions = Array.from(client.commandDescriptions.keys());
