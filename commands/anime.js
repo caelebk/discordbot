@@ -4,9 +4,8 @@ module.exports = {
     description: 'Discord anime list, used with .anime [current/plan] [add/remove] [title] to add/remove to either currently watching/plan to watch or .anime list to check the list.',
     execute(message, args) {
         if(args.length < 1) return message.channel.send("Command incorrectly used");
-        if(args[0] == "list"){
-            return message.channel.send(readFile());
-        } 
+        if(args[0] == "list") return message.channel.send(readFile());
+
         var animename = "";
         for(var x = 2; x < args.length; x++)
             animename += args[x] + " ";
@@ -53,7 +52,6 @@ function writeFile(list, ins, str){
     });
 }
 
-//implement remove
 function removeText(str, strRemove){
     return str.replace(strRemove+", ", "");
 }

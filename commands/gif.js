@@ -5,10 +5,11 @@ module.exports = {
     description: "Sends a specific gifs the bot contains.",
     execute(message,args) {
         
-        if(args.length == 0 || args.length > 1) return message.channel.send("Command used incorrectly");
+        if(args.length == 0) return message.channel.send("Command used incorrectly");
+        if(args.length > 1) return message.channel.send("File does not exist.");
         if(args[0] == 'list') return message.channel.send("GIF List:```\n" + createList() + "```"); 
 
-        var filepath = "./resources/gif/" + args[0] + ".gif";
+        var filepath = "./resources/gif/" + args[0].toLowerCase() + ".gif";
         message.channel.send({files: [filepath]}).catch(err => {
             console.error(err);
             message.channel.send("File not Found.")
