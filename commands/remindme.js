@@ -1,3 +1,4 @@
+const year = 31556952000;
 const day = 86400000;
 const hour = 3600000;
 const minute = 60000;
@@ -9,23 +10,33 @@ module.exports = {
     execute(message, args){
         if(args.length > 2) return message.channel.send("Too many inputs.");
         if(args.length < 2) return message.channel.send("Missing inputs.");
-
-
+        if(isNaN(args[0])) return message.channel.send("Number not inputted.");
+        if(args[0] < 0) return message.channel.send("Stop living in the past.");
         let time = new Date();
         console.log(time.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
 
         let newTime = new Date();
         var input = args[1].toLowerCase();
-        if(input == "seconds" || input == "second" || input == "sec" || input == "secs")
+        var milli;
+        if(input == "seconds" || input == "second" || input == "sec") {
             newTime.setTime(time.getTime() + args[0] * second);
-        else if(input == "minutes" || input == "minute") 
+            milli = args[0] * second;
+        } else if(input == "minutes" || input == "minute" || input == "min") {
             newTime.setTime(time.getTime() + args[0] * minute);
-        else if(input == "hours" || input == "hour") 
+            milli = args[0] * minute;
+        } else if(input == "hours" || input == "hour") {
             newTime.setTime(time.getTime() + args[0] * hour);
-        else if(input == "days" || input == "day") 
+            milli = args[0] * hour;
+        } else if(input == "days" || input == "day") {
             newTime.setTime(time.getTime() + args[0] * day);
+            milli = args[0] * day;
+        } else if(input == "year" || input == "years") {
+            newTime.setTime(time.getTime() + args[0] * year);
+            milli = args[0] * year;
+        }
         
+        if(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) == "Invalid Date") return message.channel.send("The earth won't exist by then.");
         console.log(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
-        message.reply("I will remind you on: " + newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) + " Pacific Daylight Time");
+        message.reply("I will remind you on: " + newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) + " PDT");
     }
 }
