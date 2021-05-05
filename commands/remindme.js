@@ -11,7 +11,7 @@ module.exports = {
         if(args.length > 2) return message.channel.send("Too many inputs.");
         if(args.length < 2) return message.channel.send("Missing inputs.");
         if(isNaN(args[0])) return message.channel.send("Number not inputted.");
-        if(args[0] < 0) return message.channel.send("Stop living in the past.");
+        if(args[0] < 0) return message.channel.send("I can't remind you in the past dumbass.");
         let time = new Date();
         console.log(time.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
 
