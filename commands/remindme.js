@@ -12,11 +12,11 @@ module.exports = {
 
 
         let time = new Date();
-        console.log(time.toString());
+        console.log(time.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
 
         let newTime = new Date();
         var input = args[1].toLowerCase();
-        if(input == "seconds" || input == "second")
+        if(input == "seconds" || input == "second" || input == "sec" || input == "secs")
             newTime.setTime(time.getTime() + args[0] * second);
         else if(input == "minutes" || input == "minute") 
             newTime.setTime(time.getTime() + args[0] * minute);
@@ -25,7 +25,7 @@ module.exports = {
         else if(input == "days" || input == "day") 
             newTime.setTime(time.getTime() + args[0] * day);
         
-        console.log(newTime.toString());
-        message.reply("I will remind you on: " + newTime.toString());
+        console.log(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
+        message.reply("I will remind you on: " + newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) + " Pacific Daylight Time");
     }
 }
