@@ -29,6 +29,8 @@ module.exports = {
             client.commands.get('anime').execute(message,args);
         } else if (command === "clear") {
             client.commands.get('clear').execute(message);
+        } else if (command === "remindme") {
+            client.commands.get('remindme').execute(message, args);
         }
     }
 }

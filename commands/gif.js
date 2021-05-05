@@ -20,7 +20,7 @@ module.exports = {
 function createList(){
     var list = "";
     var files = fs.readdirSync('./resources/gif');
-    for(var x = 1; x < files.length; x++){
+    for(var x = 0; x < files.length; x++){
         list += files[x].substring(0,files[x].indexOf("."))+", ";
     }
     return list;
