@@ -12,13 +12,12 @@ module.exports = {
             
         if(animename == "") return message.channel.send("No anime inputted.");
         if (args[0] == "plan") {
-            writeFile(args[0], args[1], animename.trim());
+            message.channel.send(writeFile(args[0], args[1], animename.trim()));
         } else if (args[0] == "current") {
-            writeFile(args[0], args[1], animename.trim());
+            message.channel.send(writeFile(args[0], args[1], animename.trim()));
         } else {
             return message.channel.send("Command incorrectly used.")
         }
-            
     }
 }
 
@@ -33,8 +32,8 @@ function readFile(){
 }
 
 //fix arguments
-function writeFile(list, ins, str){
-    var content = readFile().split("\n");
+ function writeFile(list, ins, str){
+    var content = readFile().split('\n');
     console.log(content);
     if(list == "current")
         var edit = 1;
@@ -50,8 +49,11 @@ function writeFile(list, ins, str){
     fs.writeFile('./resources/animelist/animelist.txt', content.join("\n"), function (err) {
         if (err) throw err;
     });
+    return content.join("\n");
 }
+    
 
 function removeText(str, strRemove){
-    return str.replace(strRemove+", ", "");
+    console.log(str);
+    return str.replace(strRemove + ", ", "");
 }

@@ -1,3 +1,5 @@
+const message = require("../events/message");
+
 const year = 31556952000;
 const day = 86400000;
 const hour = 3600000;
@@ -35,8 +37,17 @@ module.exports = {
             milli = args[0] * year;
         }
         
-        if(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) == "Invalid Date") return message.channel.send("The earth won't exist by then.");
+        if(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) == "Invalid Date") return message.channel.send("Invalid Date");
         console.log(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}));
         message.reply("I will remind you on: " + newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) + " PDT");
+        var reminder = setInterval(function(){
+            var now = new Date();
+            var remainingTime = newTime - now.getTime();
+            if(remainingTime <= 0) {
+                message.channel.send("<@" + message.author.id + ">");
+                clearInterval(reminder);
+            }
+        }, 1000)
     }
 }
+
