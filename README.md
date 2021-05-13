@@ -36,8 +36,8 @@
   - Implemented a usage limit to one per user to prevent spam.
 
 -  Discord Anime List:
-  - Implemented abillity to add/remove onto one of two lists: Currently Watching or Plan to Watch. 
-  - Implemented persistence through overwriting text file save.
+  -  Implemented abillity to add/remove onto one of two lists: Currently Watching or Plan to Watch. 
+  -  Implemented persistence through overwriting text file save.
 
 ## Functions to be Implemented:
 
