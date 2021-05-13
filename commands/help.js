@@ -12,7 +12,6 @@ module.exports = {
             if(x!=help)
                 msg += "**."+keys[x]+"** - " +descriptions[x] +"\n";
         }
-        console.log(msg);
         var embed = new Discord.MessageEmbed();
         embed.setTitle("Monkey OOGA BOOGA Bot");
         embed.setColor('#0099ff');

@@ -1,12 +1,12 @@
 module.exports = {
     name: "clear",
-    description: "Clears all of the bots messages.",
+    description: "Clears all commands and bot messages.",
     execute(message) {
         message.channel.messages.fetch()
-        .then(messages => message.channel.bulkDelete(messages.filter(m => m.author.bot)))
+        .then(messages => message.channel.bulkDelete(messages.filter(m => m.author.bot || m.content.charAt(0) === "."), true))
         .catch(err =>
             {
-                message.channel.send("Not enough permission to clear.")
+                message.channel.send("Not enough permission to clear or messages are older than 14 days.")
                 console.log(err);
             });
     }
