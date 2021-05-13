@@ -3,7 +3,9 @@
 ## Functions Implemented:
 
 - Interactive Commandline
-- Vote System
+- Vote System through emoji reactions
+- Clear command for Bot Messages & Commands 
+- Gif player based on selected gifs.
 
 ## Work In Progress:
 
@@ -27,11 +29,19 @@
   - Implemented ability to obtain specific data off a public google spreadsheet
   - Need to organize/restructure a little better but functionality is good
 
+- Remindme notifier!
+  - Implemented a notifier that will ping a notification based on the # of seconds, minutes, hours, days, years.
+  - Implemented abillity to clear the notification before it has notified.
+  - Implemented abillity to check status of the notification.
+  - Implemented a usage limit to one per user to prevent spam.
+
+-  Discord Anime List:
+  - Implemented abillity to add/remove onto one of two lists: Currently Watching or Plan to Watch. 
+  - Implemented persistence through overwriting text file save.
+
 ## Functions to be Implemented:
 
 - Role Adder
-
-- Event Scheduler/Reminder
 
 - Memes
 
@@ -46,8 +56,3 @@
 
   - !opt {rolename} to opt into an unofficial role to prevent role clutter.
   - !ping {rolename} for bot to ping all the users inside that unofficial role.
-
-- discord anime list
-  - saves all the anime that the discord wants to watch as a group
-  - saves the episode too?
-  - saves the users watching that anime & the episodes each user is on?
