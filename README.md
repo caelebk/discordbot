@@ -29,15 +29,15 @@
   - Implemented ability to obtain specific data off a public google spreadsheet
   - Need to organize/restructure a little better but functionality is good
 
-- Remindme notifier!
-  - Implemented a notifier that will ping a notification based on the # of seconds, minutes, hours, days, years.
+- Remindme notification reminder!
+  - Implemented a notifier that will ping a notification based on the # of seconds, minutes, hours, days, years inputted.
   - Implemented abillity to clear the notification before it has notified.
   - Implemented abillity to check status of the notification.
   - Implemented a usage limit to one per user to prevent spam.
 
--  Discord Anime List:
-  -  Implemented abillity to add/remove onto one of two lists: Currently Watching or Plan to Watch. 
-  -  Implemented persistence through overwriting text file save.
+- Discord Anime List:
+  - Implemented abillity to add/remove onto one of two lists: Currently Watching or Plan to Watch. 
+  - Implemented persistence through overwriting text file save.
 
 ## Functions to be Implemented:
 
