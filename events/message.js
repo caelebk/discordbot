@@ -10,7 +10,7 @@ module.exports = {
         const command = args.shift().toLowerCase(); //removes the first substring in the array (command) and turns the string to lowercase.
 
         if(command === "help") {
-            client.commands.get('help').execute(message,args,client);
+            client.commands.get('help').execute(message,client);
         } else if (command === "args") {
             client.commands.get('args').execute(message,args);
         } else if (command === "play") {
