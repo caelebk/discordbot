@@ -49,6 +49,8 @@ module.exports = {
         } else if(input == "year" || input == "years") {
             newTime.setTime(time.getTime() + args[0] * year);
             milli = args[0] * year;
+        } else {
+            return;
         }
         
         if(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) == "Invalid Date") 

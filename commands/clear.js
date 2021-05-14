@@ -6,7 +6,7 @@ module.exports = {
         .then(messages => message.channel.bulkDelete(messages.filter(m => m.author.bot || m.content.charAt(0) === "."), true))
         .catch(err =>
             {
-                message.channel.send("Not enough permission to clear or messages are older than 14 days.")
+                message.channel.send("Not enough permission to clear.")
                 console.log(err);
             });
     }
