@@ -50,7 +50,7 @@ module.exports = {
             newTime.setTime(time.getTime() + args[0] * year);
             milli = args[0] * year;
         } else {
-            return;
+            return message.channel.send("Invalid Input");
         }
         
         if(newTime.toLocaleString("en-US", {timeZone: "America/Vancouver"}) == "Invalid Date") 
