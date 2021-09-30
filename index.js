@@ -16,7 +16,7 @@ const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
-    client.events.set(event.name, event);
+	client.events.set(event.name, event);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
@@ -24,8 +24,8 @@ for (const file of eventFiles) {
 	}
 }
 
-for(const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
 	client.commandDescriptions.set(command.description, command);
 }
