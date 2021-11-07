@@ -3,57 +3,61 @@ module.exports = {
     name: 'anime',
     description: 'Use .anime [current/plan] [add/remove] [title] or .anime [list] to add/remove/check the list.',
     execute(message, args) {
-        if(args.length < 1) return message.channel.send("Command incorrectly used");
-        if(args[0] == "list") return message.channel.send(readFile());
-
+        if (args.length < 1) return message.channel.send("Command incorrectly used");
+        let list = readFile();
+        if (args[0] == "list") return message.channel.send(printList(list));
+        // .anime current add "anime"
         var animename = "";
-        for(var x = 2; x < args.length; x++)
+        for (var x = 2; x < args.length; x++)
             animename += args[x] + " ";
-            
-        if(animename == "") return message.channel.send("No anime inputted.");
-        if (args[0] == "plan") {
-            message.channel.send(writeFile(args[0], args[1], animename.trim()));
-        } else if (args[0] == "current") {
-            message.channel.send(writeFile(args[0], args[1], animename.trim()));
-        } else {
-            return message.channel.send("Command incorrectly used.")
-        }
+        if (animename == "") return message.channel.send("No anime inputted.");
+        if (args[0] == "current")
+            updateList(args[1], animename.trim(), list.currentlyWatching);
+        else if (args[0] == "plan")
+            updateList(args[1], animename.trim(), list.planToWatch);
+        writeFile(list);
+        console.log(list);
     }
 }
 
-function readFile(){
-    try{
-        console.log(fs.readFileSync('./resources/animelist/animelist.txt', 'utf8'))
-        return fs.readFileSync('./resources/animelist/animelist.txt', 'utf8')
+function updateList(arg, anime, list) {
+    if (arg == "add")
+        list.push(anime)
+    else if (arg == "remove") {
+        let index = list.indexOf(anime);
+        if (index == -1) return;
+        list.splice(index, 1)
+    }
+}
+
+function printList(file) {
+    let animelist = '**Currently Watching:**\n';
+
+    for (let x of file.currentlyWatching) {
+        animelist += x + ", ";
+    }
+    animelist += "\n**Planning to Watch:**\n";
+    for (let x of file.planToWatch) {
+        animelist += x + ", ";
+    }
+    return animelist;
+}
+
+function readFile() {
+    try {
+        let json = fs.readFileSync('./resources/animelist/animelist.json')
+        return JSON.parse(json);
     } catch (err) {
         console.error(err);
     }
     return "error";
 }
 
-//fix arguments
- function writeFile(list, ins, str){
-    var content = readFile().split('\n');
-    console.log(content);
-    if(list == "current")
-        var edit = 1;
-    else if(list == "plan")
-        var edit = 3;
-    else return "failed";
-
-    if(ins == "add"){
-        content[edit] += str + ", ";
-    } else if (ins == "remove") {
-        content[edit] = removeText(content[edit], str);
+function writeFile(jsonfile) {
+    try {
+        let list = JSON.stringify(jsonfile);
+        fs.writeFileSync('./resources/animelist/animelist.json', list)
+    } catch (err) {
+        console.error(err);
     }
-    fs.writeFile('./resources/animelist/animelist.txt', content.join("\n"), function (err) {
-        if (err) throw err;
-    });
-    return content.join("\n");
-}
-    
-
-function removeText(str, strRemove){
-    console.log(str);
-    return str.replace(strRemove + ", ", "");
 }
