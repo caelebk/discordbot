@@ -3,8 +3,8 @@ module.exports = {
     execute(message, client) {
         const prefix = ".";
         if (message.author.bot) return; // if message is from the bot itself or other bots ignore.
-        if (message.guild == null) return;
         if (!message.content.startsWith(prefix)) return; //if message doesnt start with prefix then ignore.
+        if (message.guild == null) return pm(message, client, prefix);
 
         const commandLine = message.content.slice(prefix.length);
         const args = commandLine.split(" ");
@@ -33,5 +33,17 @@ module.exports = {
         } else if (command === "remindme") {
             client.commands.get('remindme').execute(message, args);
         }
+    }
+}
+
+function pm(message, client, prefix) {
+    if (message.guild != null) return;
+
+    const commandLine = message.content.slice(prefix.length);
+    const args = commandLine.split(" ");
+    const command = args.shift().toLowerCase();
+
+    if (command == "msg") {
+        client.pmCommands.get('msg').execute(message, client, args);
     }
 }
