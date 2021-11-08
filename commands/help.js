@@ -17,7 +17,7 @@ module.exports = {
         embed.setColor('#0099ff');
         embed.setThumbnail('https://cdn.discordapp.com/avatars/580563737635848192/5a16616a8eb9bc5115bef04c6e2c8eb5.png?size=256');
         embed.setDescription("Multi-Function Bot made for Squad Discord Server");
-        embed.setAuthor('Made by Caeleb', 'https://cdn.discordapp.com/avatars/216602183683014656/1eedd6b15d3eb222c949752c96da6a1a.png?size=256', 'https://caelebk.github.io/personal-site/');
+        embed.setAuthor('Made by Caeleb', 'https://cdn.discordapp.com/avatars/216602183683014656/1eedd6b15d3eb222c949752c96da6a1a.png?size=256', 'https://caelebkoharjo.herokuapp.com/');
         embed.addFields({name: "Commands", value: msg});
         message.channel.send(embed);
     }
