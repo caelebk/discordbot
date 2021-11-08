@@ -1,33 +1,34 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const usersList = new Map();
+let usersList = new Map();
 const oct = new Date('October 24, 2021 03:24:00');
 const nov = new Date('November 1, 2021 03:24:00');
 //dates are from 24 October 2021 to 1 November 2021
 module.exports = {
     name: "tierlist",
     description: "Prints selected tierlist.",
-    async execute(message, client, args) {
-        const pinned = await client.channels.cache.get('772958938538049556').messages.fetchPinned();
-        for(let x of pinned) {
-            if(x[1].createdAt < nov &&  x[1].createdAt > oct){
-                let temp = translateStr(x[1].content);
-                usersList.set(x[1].author.username, [x[1].author,temp]);
-            }
-        }
-        console.log(usersList)
-        /*
-        const obj = Object.fromEntries(usersList);
-        writeFile(obj);*/
+    execute(message, client, args) {
+        //writeFile(client);
+        if (args.length != 1) return;
+        readFile();
+        if(usersList.get(args[0].toLowerCase()) == undefined) return;
+
+        createEmbed(message, args[0], usersList.get(args[0])[0], usersList.get(args[0])[1])
+
+        /*for(const [key, value] of usersList.entries()) {
+            createEmbed(message, key, value[0], value[1]);
+        }*/
+
         //createEmbed(message, usersList.get('chicken789')[0], usersList.get('chicken789')[1]);
     }
 }
 
-function createEmbed(message, author, content){
+function createEmbed(message, name, author, content){
     let embed = new Discord.MessageEmbed();
-    embed.setTitle(author.username +"'s offical NNN Tier List 2021");
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    embed.setTitle(name +"'s offical NNN Tier List 2021");
     embed.setColor('#0099ff');
-    embed.setThumbnail(author.avatarURL());
+    embed.setThumbnail(author.avatarURL);
     embed.addFields({name: "Tier List:", value: content});
     message.channel.send(embed);
 }
@@ -51,16 +52,25 @@ function translateStr(list){
 function readFile() {
     try {
         let json = fs.readFileSync('./resources/tierlist/2021tierlist.json')
-        return JSON.parse(json);
+        const data = JSON.parse(json);
+        usersList = new Map(Object.entries(data));
     } catch (err) {
         console.error(err);
     }
     return "error";
 }
 
-function writeFile(jsonfile) {
+async function writeFile(client) {
     try {
-        let list = JSON.stringify(jsonfile);
+        const pinned = await client.channels.cache.get('772958938538049556').messages.fetchPinned();
+        for(let x of pinned) {
+            if(x[1].createdAt < nov &&  x[1].createdAt > oct){
+                let temp = translateStr(x[1].content);
+                usersList.set(x[1].author.username.toLowerCase(), [x[1].author,temp]);
+            }
+        }
+        const obj = Object.fromEntries(usersList);
+        let list = JSON.stringify(obj);
         fs.writeFileSync('./resources/tierlist/2021tierlist.json', list)
     } catch (err) {
         console.error(err);
