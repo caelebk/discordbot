@@ -32,6 +32,8 @@ module.exports = {
             client.commands.get('clear').execute(message);
         } else if (command === "remindme") {
             client.commands.get('remindme').execute(message, args);
+        } else if (command == "tierlist") {
+            client.commands.get('tierlist').execute(message,client,args);
         }
     }
 }
