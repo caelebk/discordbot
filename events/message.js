@@ -49,5 +49,7 @@ function pm(message, client, prefix) {
 
     if (command == "msg") {
         client.pmCommands.get('msg').execute(message, client, args);
+    } else if (command == 'loser') {
+        client.pmCommands.get('loser').execute(message, args);
     }
 }
