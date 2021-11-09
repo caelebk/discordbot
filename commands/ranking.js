@@ -47,7 +47,7 @@ function createEmbed(message, str) {
     embed.setColor('#0099ff');
     embed.setThumbnail('https://www.pinclipart.com/picdir/middle/54-540742_leaderboard-icon-free-download-leaderboard-icons-png-clipart.png');
     embed.setAuthor('Made by Caeleb', 'https://cdn.discordapp.com/avatars/216602183683014656/1eedd6b15d3eb222c949752c96da6a1a.webp', 'https://www.caelebkoharjo.herokuapp.com');
-    embed.setDescription('Scores are calculated using the following formula.\n   ->*Summation of (actual placement - predicted placement)*\nIn other words, lower score = more accurate pickems');
+    embed.setDescription('Scores are calculated using the following formula.\n   ->*Summation of (actual placement - predicted placement)*\nIn other words, lower score = more accurate pickems.');
     embed.addFields({ name: "Leaderboards:", value: str });
     message.channel.send(embed);
 }
