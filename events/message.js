@@ -33,7 +33,9 @@ module.exports = {
         } else if (command === "remindme") {
             client.commands.get('remindme').execute(message, args);
         } else if (command == "tierlist") {
-            client.commands.get('tierlist').execute(message,client,args);
+            client.commands.get('tierlist').execute(message, client, args);
+        } else if (command == "ranking") {
+            client.commands.get('ranking').execute(message, args);
         }
     }
 }
