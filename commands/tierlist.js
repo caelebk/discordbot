@@ -11,9 +11,11 @@ module.exports = {
         //writeFile(client);
         if (args.length != 1) return;
         readFile();
-        if(usersList.get(args[0].toLowerCase()) == undefined) return;
 
-        createEmbed(message, args[0], usersList.get(args[0])[0], usersList.get(args[0])[1])
+        const name = args[0].toLowerCase();
+        if (usersList.get(name) == undefined) return;
+
+        createEmbed(message, name, usersList.get(name)[0], usersList.get(name)[1])
 
         /*for(const [key, value] of usersList.entries()) {
             createEmbed(message, key, value[0], value[1]);
@@ -23,28 +25,28 @@ module.exports = {
     }
 }
 
-function createEmbed(message, name, author, content){
+function createEmbed(message, name, author, content) {
     let embed = new Discord.MessageEmbed();
     name = name.charAt(0).toUpperCase() + name.slice(1);
-    embed.setTitle(name +"'s offical NNN Tier List 2021");
+    embed.setTitle(name + "'s offical NNN Tier List 2021");
     embed.setColor('#0099ff');
     embed.setThumbnail(author.avatarURL);
-    embed.addFields({name: "Tier List:", value: content});
+    embed.addFields({ name: "Tier List:", value: content });
     message.channel.send(embed);
 }
 
 //keywords: pick, list, pref .splice(0,1)
-function translateStr(list){
+function translateStr(list) {
     //console.log('Before:\n', list)
     list = list.split('\n');
     let count = 0;
-    for(let x = 0; x < 2; x++) {
+    for (let x = 0; x < 2; x++) {
         let line = list[x].toLowerCase();
         if (line === '' || (line.indexOf('pick') != -1 || line.indexOf('list') != -1 || line.indexOf('pref') != -1)) {
             count++;
         }
     }
-    list.splice(0,count);
+    list.splice(0, count);
     console.log(list.length);
     return list.join('\n');
 }
@@ -63,10 +65,10 @@ function readFile() {
 async function writeFile(client) {
     try {
         const pinned = await client.channels.cache.get('772958938538049556').messages.fetchPinned();
-        for(let x of pinned) {
-            if(x[1].createdAt < nov &&  x[1].createdAt > oct){
+        for (let x of pinned) {
+            if (x[1].createdAt < nov && x[1].createdAt > oct) {
                 let temp = translateStr(x[1].content);
-                usersList.set(x[1].author.username.toLowerCase(), [x[1].author,temp]);
+                usersList.set(x[1].author.username.toLowerCase(), [x[1].author, temp]);
             }
         }
         const obj = Object.fromEntries(usersList);
