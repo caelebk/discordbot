@@ -21,7 +21,7 @@ module.exports = {
         if (args.length == 1) {
             if(scores.get(args[0].toLowerCase()) != undefined)
                 message.channel.send("**" + args[0].charAt(0).toUpperCase() + args[0].slice(1) +
-                 ":** " + (ranking.indexOf(args[0].toLowerCase())+1) + "th place" 
+                 ":** #" + (ranking.indexOf(args[0].toLowerCase())+1) 
                 +", Score: " + scores.get(args[0].toLowerCase()));
         } else {
             ranking.forEach((val, index) => {
