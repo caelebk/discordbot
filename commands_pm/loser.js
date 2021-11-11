@@ -1,7 +1,7 @@
 const fs = require('fs');
 module.exports = {
     name: 'loser',
-    execute(message, args) {
+    execute(message, client, args) {
         const results = readFile('./resources/tierlist/results.json');
         if (args.length == 0) return message.channel.send(results.winningList);
         if (args.length != 2) return;
@@ -14,6 +14,9 @@ module.exports = {
         if (args[0] == "add" && results.winningList.indexOf(lose) == -1) {
             results.winningList.push(lose);
             message.channel.send(results.winningList);
+            setTimeout(() => {
+                client.channels.cache.get('772958938538049556').send("@here WE HAVE A NEW LOSER. " + lose.toUpperCase() + " HAS CONFESSED TO HIS SINS.");
+            }, 2000)
         } else if (args[0] == "remove" && results.winningList.indexOf(lose) != -1) {
             results.winningList.splice(results.winningList.indexOf(lose), 1);
             message.channel.send(results.winningList);

@@ -18,7 +18,7 @@ module.exports = {
         }
 
         setTimeout(() => {
-            client.channels.cache.get('818998650591510578').send(anonMsg);
+            client.channels.cache.get('379968070829211649').send(anonMsg);
         }, 2000)
 
         author.send("You have " + users.get(username) + " messages left.")
