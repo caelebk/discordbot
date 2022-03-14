@@ -1,10 +1,11 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
+// const config = require("./config.json");
 const fs = require('fs');
 const message = require("./events/message");
 const client = new Discord.Client();
-client.login(config.BOT_TOKEN);
+// client.login(config.BOT_TOKEN);
 
+client.login(process.env.BOT_TOKEN);
 
 client.commands = new Discord.Collection();
 client.commandDescriptions = new Discord.Collection();
